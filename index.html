@@ -39,7 +39,7 @@ li {
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 5rem;
     margin-bottom: 40px;
 }
     
@@ -108,6 +108,7 @@ input {
     <button class="sort" data-sort="eventType">Event Type</button>
     <button class="sort" data-sort="familyFriendly">Family Friendly</button>
     <button class="sort" data-sort="hostPlayaName">Host Name</button>
+    <button class="sort" data-sort="day">Day</button>
     </div>    
     
     <ul class="list"></ul>
@@ -134,12 +135,13 @@ $.ajax({
 function populate(data){
 
   var options = {
-  valueNames: [ 'eventTitle', 'description', 'hostPlayaName', 'eventType', 'location', 'startEndTime', 'familyFriendly' ],
+  valueNames: [ 'eventTitle', 'description', 'hostPlayaName', 'eventType', 'location', 'startEndTime', 'familyFriendly','day' ],
   item: '<li>'+
         '<h1 class="eventTitle"></h1>'+
         '<p class="bold"> <span class="lightgrey">At</span> <span class="location green"></span>' + ' <span class="lightgrey">from</span> ' + '<span class="startEndTime magenta"></span></p>'+
         '<p class="bold"><span class="familyFriendly orange"></span>'+ ' ' + '<span class="eventType yellow"></span>'+ ' <span class="lightgrey">by</span> ' + '<span class="hostPlayaName yellow"></span></p>'+
-        '<p class="description"></p>'+
+        '<p class="day"></p>'+
+      '<p class="description"></p>'+
         '</li>'
   };
 
