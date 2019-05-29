@@ -1,0 +1,137 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+<script src="list.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">-->
+    
+<style>
+
+ul {
+    list-style-type: none;
+    font-size: 12px;
+}
+
+p {
+    font-size: 12px;
+    line-height: 18px;
+}
+
+li {
+    color: black;
+    background-color: white;
+    width 100%;
+    margin: 0px 5px 20px -35px;
+    padding: 1px 10px 5px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+
+    font-family: sans-serif;
+}
+
+.sort {
+    font-size: 12px;
+    font-size: 1.2rem;    
+    padding: 5px 15px;
+    border-radius: 25px;
+    border: none;
+    display: inline-block;
+    color: #2e2e2e;
+    text-decoration: none;
+    background-color: rgba(0,0,0,0.05);
+    margin: 2px 0;
+}
+
+input { 
+    border-radius: 25px;
+    padding: 7px 14px;
+    background-color: transparent;
+    border: solid 1px rgba(0,0,0,0.2);
+    width: 100%;
+    box-sizing: border-box;
+    color: #2e2e2e;
+    margin-bottom: 5px;
+}
+
+.sort-by {
+    font-size: 12px;
+    font-size: 1.2rem;  
+    font-family: sans-serif;
+}
+
+.green {color: #0faa89;} /* location */
+.magenta {color: #a65177; white-space: nowrap;} /* time */
+.yellow {color: #deca22;} /* type and host */
+.orange {color: #dc7426;} /* family friendly */
+.lightgrey {color: rgba(0,0,0,0.4);}
+
+.bold {
+    font-weight: bold;
+    margin: 10px 0px 0px 0px;
+}
+
+</style>
+    
+    
+</head>
+
+<body>
+    
+<div id="fomo-list">
+    
+    <input class="search" placeholder="Search">
+    <span class='sort-by'>Sort by:</span>
+    <button class="sort" data-sort="startEndTime">Time</button>
+    <button class="sort" data-sort="eventTitle">Event Title</button>
+    <button class="sort" data-sort="location">Location</button>
+    <button class="sort" data-sort="eventType">Event Type</button>
+    <button class="sort" data-sort="familyFriendly">Family Friendly</button>
+    <button class="sort" data-sort="hostPlayaName">Host Name</button>
+    
+    <ul class="list"></ul>
+</div>
+    
+<script>
+ 
+      
+$.ajax({
+    url: "https://raw.githubusercontent.com/zeedee-h/bl-fomo/master/fomo-json-small.json",
+    dataType: "json",
+    type: "get",
+    cache: false,
+    success: function(data) {
+       console.log(data.length);
+       populate(data);
+    }
+});
+
+      
+function populate(data){
+
+  var options = {
+  valueNames: [ 'eventTitle', 'description', 'hostPlayaName', 'eventType', 'location', 'startEndTime', 'familyFriendly' ],
+  item: '<li>'+
+        '<h2 class="eventTitle"></h2>'+
+        '<p class="bold"> <span class="lightgrey">At</span> <span class="location green"></span>' + ' <span class="lightgrey">from</span> ' + '<span class="startEndTime magenta"></span></p>'+
+        '<p class="bold"><span class="familyFriendly orange"></span>'+ ' ' + '<span class="eventType yellow"></span>'+ ' <span class="lightgrey">by</span> ' + '<span class="hostPlayaName yellow"></span></p>'+
+        '<p class="description"></p>'+
+        '</li>'
+  };
+
+  var values = data;
+
+  var fomoList = new List('fomo-list', options, values);
+    
+}; 
+
+</script>
+    
+</body>
+</html>
