@@ -81,7 +81,7 @@ input {
 
 
 .green {color: #0faa89;} /* location */
-.magenta {color: #a65177; white-space: nowrap;} /* time */
+    .magenta {color: #a65177;} /*white-space: nowrap;}  time */
 .yellow {color: #deca22;} /* type and host */
 .orange {color: #dc7426;} /* family friendly */
 .lightgrey {color: rgba(0,0,0,0.4);}
@@ -117,9 +117,11 @@ input {
     
 <script>
  
+const fullData = "https://raw.githubusercontent.com/zeedee-h/bl-fomo/master/fomo-json-full.json";
+const smallData = "https://raw.githubusercontent.com/zeedee-h/bl-fomo/master/fomo-json-small.json";
       
 $.ajax({
-    url: "https://raw.githubusercontent.com/zeedee-h/bl-fomo/master/fomo-json-small.json",
+    url: fullData,
     dataType: "json",
     type: "get",
     cache: false,
