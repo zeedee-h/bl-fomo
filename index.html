@@ -80,9 +80,10 @@ input {
 
 
 .green {color: #0faa89;} /* location */
-    .magenta {color: #a65177;} /*white-space: nowrap;}  time */
+.magenta {color: #a65177;} /*white-space: nowrap;}  time */
 .yellow {color: #deca22;} /* type and host */
 .orange {color: #dc7426;} /* family friendly */
+.blue {color: #0f75aa;} /* family friendly */
 .lightgrey {color: rgba(0,0,0,0.4);}
 
 .bold {
@@ -138,7 +139,7 @@ function populate(data){
   valueNames: [ 'eventTitle', 'description', 'hostPlayaName', 'eventType', 'location', 'startEndTime', 'familyFriendly','day' ],
   item: '<li>'+
         '<h1 class="eventTitle"></h1>'+
-        '<p class="bold"> <span class="lightgrey">At</span> <span class="location green"></span>' + ' <span class="lightgrey">from</span> ' + '<span class="startEndTime magenta"></span></p>'+
+        '<p class="bold"> <span class="lightgrey">At</span> <span class="location green"></span>' + ' <span class="lightgrey">on </span>' +'<span class="day blue"></span>'+ ' <span class="lightgrey">from </span>' + '<span class="startEndTime magenta"></span></p>'+
         '<p class="bold"><span class="familyFriendly orange"></span>'+ ' ' + '<span class="eventType yellow"></span>'+ ' <span class="lightgrey">by</span> ' + '<span class="hostPlayaName yellow"></span></p>'+
         '<p class="day"></p>'+
       '<p class="description"></p>'+
